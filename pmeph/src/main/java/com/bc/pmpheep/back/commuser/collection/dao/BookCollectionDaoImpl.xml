@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bc.pmpheep.back.commuser.collection.dao.BookCollectionDao">
+<resultMap type="java.util.Map" id="bookMap"></resultMap>
+    <!-- 查询书籍收藏夹名称和收藏夹下收藏书籍的数量 -->
+	<select id="queryBookCollectionList" resultMap="bookMap">
+	   select f.favorite_name,f.id as id,count(f.book_id) as mcount from (select w.*,m.book_id from writer_book_favorite w left  join book_user_mark m on w.id=m.favorite_id) f GROUP BY f.favorite_name
+	</select>
+	<!--查询一个收藏夹下所有的书籍  -->
+	<select id="queryBookList" parameterType="map" resultMap="bookMap">
+	   select b.author,b.bookname,b.clicks,b.comments,b.likes,b.bookmarks,d.detail from book_user_mark m LEFT JOIN book b on m.book_id=b.id   LEFT JOIN  book_detail d on b.id=d.book_id where m.favorite_id=#{favoriteId} 
+	</select>
+</mapper>

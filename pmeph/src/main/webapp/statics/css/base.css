@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.content-wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+}
+
+.body {
+    width: 100%;
+    background: #FFFFFF;
+}
+
+.color-blue {
+    color: #179192;
+}
+
+.bgcolor-blue {
+    background: #179192;
+}
