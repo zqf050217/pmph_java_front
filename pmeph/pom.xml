@@ -5,7 +5,7 @@
     <artifactId>pmeph</artifactId>
     <packaging>war</packaging>
     <version>0.0.1</version>
-    <name>PMPH E-education Platform</name>
+    <name>PMPH E-education Platform Front</name>
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
