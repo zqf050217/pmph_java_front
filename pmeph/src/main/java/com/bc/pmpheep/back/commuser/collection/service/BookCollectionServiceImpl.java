@@ -12,17 +12,12 @@ import org.springframework.stereotype.Service;
 import com.bc.pmpheep.back.commuser.collection.dao.BookCollectionDao;
 
 /**
- * @author guoxiaobao
- *@Title: 
- * @Description: 书记收藏接口实现
- * @param 
- * @return 
- * @throws
+ * @author guoxiaobao @Title: @Description: 书记收藏接口实现 @param @return @throws
  */
 @Service("com.bc.pmpheep.back.commuser.collection.service.BookCollectionServiceImpl")
 public class BookCollectionServiceImpl implements BookCollectionService {
 	@Resource
-	private BookCollectionDao   bookCollectionDao;
+	private BookCollectionDao bookCollectionDao;
 
 	@Override
 	public List<Map<String, Object>> queryBookCollectionList() {
@@ -31,8 +26,6 @@ public class BookCollectionServiceImpl implements BookCollectionService {
 
 	@Override
 	public List<Map<String, Object>> queryBookList(BigInteger favoriteId) {
-		// TODO Auto-generated method stub
 		return bookCollectionDao.queryBookList(favoriteId);
 	}
-
 }

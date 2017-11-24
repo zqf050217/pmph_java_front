@@ -22,11 +22,11 @@ public class PageData extends HashMap implements Map {
         Map properties = request.getParameterMap();
         Map returnMap = new HashMap();
         Iterator entries = properties.entrySet().iterator();
-        Entry entry;
+        Map.Entry entry;
         String name = "";
         String value = "";
         while (entries.hasNext()) {
-            entry = (Entry) entries.next();
+            entry = (Map.Entry) entries.next();
             name = (String) entry.getKey();
             Object valueObj = entry.getValue();
             if (null == valueObj) {

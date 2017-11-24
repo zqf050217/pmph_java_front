@@ -73,7 +73,7 @@ public class FileUtil {
         try {
             String filePath = filePathAndName;
             filePath = filePath.toString();
-            File myDelFile = new File(filePath);
+            java.io.File myDelFile = new java.io.File(filePath);
             myDelFile.delete();
 
         } catch (Exception e) {

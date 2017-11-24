@@ -117,8 +117,8 @@ public final class DateUtil {
      */
     public static long getDaySub(String beginDateStr, String endDateStr) {
         long day = 0;
-        Date beginDate = null;
-        Date endDate = null;
+        java.util.Date beginDate = null;
+        java.util.Date endDate = null;
         try {
             beginDate = sdfDay.parse(beginDateStr);
             endDate = sdfDay.parse(endDateStr);
@@ -220,10 +220,10 @@ public final class DateUtil {
      */
     public static String getTimes(String StrDate) {
         String resultTimes = "";
-        Date now;
+        java.util.Date now;
         try {
             now = new Date();
-            Date date = sdfTime.parse(StrDate);
+            java.util.Date date = sdfTime.parse(StrDate);
             long times = now.getTime() - date.getTime();
             long day = times / (24 * 60 * 60 * 1000);
             long hour = (times / (60 * 60 * 1000) - day * 24);
@@ -255,7 +255,7 @@ public final class DateUtil {
      */
     public static Timestamp getCurrentTime() {
         String ret;
-        ret = sdfTime.format(new Date());
+        ret = sdfTime.format(new java.util.Date());
         Timestamp currentTime = Timestamp.valueOf(ret);
         return currentTime;
     }
