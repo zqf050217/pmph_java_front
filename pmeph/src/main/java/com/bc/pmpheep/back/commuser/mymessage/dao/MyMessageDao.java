@@ -7,53 +7,50 @@ import com.bc.pmpheep.back.plugin.PageParameter;
 import com.bc.pmpheep.service.exception.CheckedServiceException;
 
 public interface MyMessageDao {
-	/**
-	 * 
-	 * 
-	 * 功能描述：获取我的消息列表
-	 * 
-	 * @param pageParameter
-	 *            分页参数,title 消息标题,isRead 是否已读,userId 用户id,userType 用户类型
-	 * @return
-	 * @throws CheckedServiceException
-	 * 
-	 */
-	List<MyMessageVO> listMyMessage(PageParameter<MyMessageVO> pageParameter);
+    /**
+     * 
+     * 
+     * 功能描述：获取我的消息列表
+     * 
+     * @param pageParameter 分页参数,title 消息标题,isRead 是否已读,userId 用户id,userType 用户类型
+     * @return
+     * @throws CheckedServiceException
+     * 
+     */
+    List<MyMessageVO> listMyMessage(PageParameter<MyMessageVO> pageParameter);
 
-	/**
-	 * 
-	 * 
-	 * 功能描述：获取总条数
-	 * 
-	 * @param pageParameter
-	 * @return
-	 * 
-	 */
-	Integer listMyMessageTotal(PageParameter<MyMessageVO> pageParameter);
+    /**
+     * 
+     * 
+     * 功能描述：获取总条数
+     * 
+     * @param pageParameter
+     * @return
+     * 
+     */
+    Integer listMyMessageTotal(PageParameter<MyMessageVO> pageParameter);
 
-	/**
-	 * 
-	 * 
-	 * 功能描述：获取消息详情
-	 * 
-	 * @param id
-	 *            消息id
-	 * @return
-	 * @throws CheckedServiceException
-	 * 
-	 */
-	MyMessageVO getMyMessageDetail(Long id);
+    /**
+     * 
+     * 
+     * 功能描述：获取消息详情
+     * 
+     * @param id 消息id
+     * @return
+     * @throws CheckedServiceException
+     * 
+     */
+    MyMessageVO getMyMessageDetail(Long id);
 
-	/**
-	 * 
-	 * 
-	 * 功能描述：逻辑删除我的消息
-	 * 
-	 * @param ids
-	 *            需要删除的消息id
-	 * @return
-	 * @throws CheckedServiceException
-	 * 
-	 */
-	Integer updateMyMessage(Long[] ids);
+    /**
+     * 
+     * 
+     * 功能描述：逻辑删除我的消息
+     * 
+     * @param ids 需要删除的消息id
+     * @return
+     * @throws CheckedServiceException
+     * 
+     */
+    Integer updateMyMessage(Long[] ids);
 }
