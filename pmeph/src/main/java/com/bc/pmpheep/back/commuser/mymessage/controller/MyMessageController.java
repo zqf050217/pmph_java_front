@@ -35,8 +35,8 @@ public class MyMessageController {
 		myMessageVO.setTitle(title);
 		myMessageVO.setIsRead(isRead);
 		pageParameter.setParameter(myMessageVO);
-		Map<String, PageResult<MyMessageVO>> map = new HashMap<>();
-		map.put("mymessage", myMessageService.listMyMessage(pageParameter));
+		Map<String, ResponseBean<MyMessageVO>> map = new HashMap<>();
+		map.put("mymessage", new ResponseBean(myMessageService.listMyMessage(pageParameter)));
 		return new ModelAndView("commuser/mymessage/list", map);
 	}
 
@@ -48,15 +48,15 @@ public class MyMessageController {
 		myMessageVO.setUserType(userType);
 		myMessageVO.setIsRead(false);
 		pageParameter.setParameter(myMessageVO);
-		Map<String, PageResult<MyMessageVO>> map = new HashMap<>();
-		map.put("mymessage", myMessageService.listMyMessageOfIcon(pageParameter));
+		Map<String, ResponseBean<MyMessageVO>> map = new HashMap<>();
+		map.put("mymessage", new ResponseBean(myMessageService.listMyMessageOfIcon(pageParameter)));
 		return new ModelAndView("commuser/mymessage/icon", map);
 	}
 
 	@RequestMapping(value = "/todetail", method = RequestMethod.PUT)
 	public ModelAndView detail(Long id) {
-		Map<String, MyMessageVO> map = new HashMap<>();
-		map.put("mymessage", myMessageService.updateMyMessageDetail(id));
+		Map<String, ResponseBean<MyMessageVO>> map = new HashMap<>();
+		map.put("mymessage", new ResponseBean(myMessageService.updateMyMessageDetail(id)));
 		return new ModelAndView("commuser/mymessage/detail", map);
 	}
 
