@@ -16,10 +16,9 @@
     <link rel="stylesheet" href="${ctx}/statics/css/base.css" type="text/css">
     <link rel="stylesheet" href="${ctx}/statics/commuser/homepage/homepage.css" type="text/css">
 </head>
-</head>
 <body>
 <div class="body">
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="aa">
         <div class="area-1">
             <div class="banner">
                 <img src="${ctx}/statics/testfile/index.png" style="width: 1050px; height: 380px">
