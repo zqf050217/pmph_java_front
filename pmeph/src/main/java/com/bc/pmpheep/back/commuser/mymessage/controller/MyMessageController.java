@@ -37,17 +37,27 @@ public class MyMessageController {
 		pageParameter.setParameter(myMessageVO);
 		Map<String, PageResult<MyMessageVO>> map = new HashMap<>();
 		map.put("mymessage", myMessageService.listMyMessage(pageParameter));
-		return new ModelAndView("/commuser/mymessage/list", map);
+		return new ModelAndView("commuser/mymessage/list", map);
 	}
 
-	@RequestMapping(value = "/toicon")
-	public ModelAndView icon(HttpServletRequest request) {
-		return new ModelAndView("/commuser/mymessage/icon");
+	@RequestMapping(value = "/toicon", method = RequestMethod.GET)
+	public ModelAndView icon(Integer pageSize, Integer pageNumber, Long userId, Integer userType) {
+		PageParameter<MyMessageVO> pageParameter = new PageParameter<>(pageNumber, pageSize);
+		MyMessageVO myMessageVO = new MyMessageVO();
+		myMessageVO.setUserId(userId);
+		myMessageVO.setUserType(userType);
+		myMessageVO.setIsRead(false);
+		pageParameter.setParameter(myMessageVO);
+		Map<String, PageResult<MyMessageVO>> map = new HashMap<>();
+		map.put("mymessage", myMessageService.listMyMessageOfIcon(pageParameter));
+		return new ModelAndView("commuser/mymessage/icon", map);
 	}
 
-	@RequestMapping(value = "/todetail")
-	public ModelAndView detail(HttpServletRequest request) {
-		return new ModelAndView("/commuser/mymessage/detail");
+	@RequestMapping(value = "/todetail", method = RequestMethod.PUT)
+	public ModelAndView detail(Long id) {
+		Map<String, MyMessageVO> map = new HashMap<>();
+		map.put("mymessage", myMessageService.updateMyMessageDetail(id));
+		return new ModelAndView("commuser/mymessage/detail", map);
 	}
 
 }
