@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.bc.pmpheep.back.commuser.mymessage.bean.MyMessageVO;
 import com.bc.pmpheep.back.commuser.mymessage.dao.MyMessageDao;
+import com.bc.pmpheep.back.commuser.user.bean.PmphUser;
+import com.bc.pmpheep.back.commuser.user.bean.WriterUser;
+import com.bc.pmpheep.back.commuser.user.service.PmphUserService;
+import com.bc.pmpheep.back.commuser.user.service.WriterUserService;
 import com.bc.pmpheep.back.plugin.PageParameter;
 import com.bc.pmpheep.back.plugin.PageResult;
 import com.bc.pmpheep.back.util.ArrayUtil;
@@ -27,6 +31,10 @@ public class MyMessageServiceImpl implements MyMessageService {
 	MessageService messageService;
 	@Autowired
 	MessageAttachmentService messageAttachmentService;
+	@Autowired
+	PmphUserService pmphUserService;
+	@Autowired
+	WriterUserService writerUserService;
 
 	@Override
 	public PageResult<MyMessageVO> listMyMessage(PageParameter<MyMessageVO> pageParameter)
@@ -128,15 +136,15 @@ public class MyMessageServiceImpl implements MyMessageService {
 			myMessageVO.setSenderName("系统");
 			break;
 		case 1:
-			// PmphUser pmphUser = pmphUserService.get(myMessageVO.getSenderId());
-			// myMessageVO.setSenderAvatar(pmphUser.getAvatar());
-			// myMessageVO.setSenderName(pmphUser.getRealname());
+			PmphUser pmphUser = pmphUserService.get(myMessageVO.getSenderId());
+			myMessageVO.setSenderAvatar(pmphUser.getAvatar());
+			myMessageVO.setSenderName(pmphUser.getRealname());
 			break;
 
 		case 2:
-			// WriterUser writerUser = writerUserService.get(myMessageVO.getSenderId());
-			// myMessageVO.setSenderAvatar(writerUser.getAvatar());
-			// myMessageVO.setSenderName(writerUser.getRealname());
+			WriterUser writerUser = writerUserService.get(myMessageVO.getSenderId());
+			myMessageVO.setSenderAvatar(writerUser.getAvatar());
+			myMessageVO.setSenderName(writerUser.getRealname());
 			break;
 
 		case 3:
