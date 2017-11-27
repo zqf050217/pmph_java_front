@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.bc.pmpheep.back.commuser.cms.dao.CmsInfoLettersManagementDao">
+	
+	<select id="getCmsInfoLettersListTotal" resultType="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		cms_content cc
+		LEFT JOIN pmph_user pu ON cc.author_id =
+		pu.id
+		LEFT JOIN cms_category ccg ON cc.category_id = ccg.id
+		WHERE
+		cc.is_deleted = 0
+		AND ccg.category_name = '信息快报'
+		AND cc.auth_status = 2
+		AND is_published = TRUE
+	</select>
+
+	<select id="list" parameterType="PageParameter" resultType="CmsInfoLettersList">
+		SELECT
+		*
+		FROM
+		cms_content cc
+		LEFT JOIN pmph_user pu ON cc.author_id =
+		pu.id
+		LEFT JOIN cms_category ccg ON cc.category_id = ccg.id
+		WHERE
+		cc.is_deleted = 0
+		AND ccg.category_name = '信息快报'
+		AND cc.auth_status = 2
+		AND is_published = TRUE
+		ORDER BY
+		<if test="parameter.isHot != null">
+			cc.is_hot DESC,cc.sort_hot,
+		</if>
+		cc.auth_date DESC
+		LIMIT #{start},#{pageSize}
+	</select>
+</mapper>
