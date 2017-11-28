@@ -221,7 +221,9 @@
     color: #B3AFA9;
     padding-bottom: 3px;
     border-bottom: 3px solid white;
+    cursor:pointer;
 }
+
 
 .tab-bar .point {
     float: right;
@@ -247,24 +249,30 @@
 }
 
 .tab-bar .page .page-num {
-    text-align: center;
-    vertical-align: top;
+    float: right;
+}
+
+.beforepage{
+    margin-top:-50px;
 }
 
 .tab-bar .page .icon-left {
-    background: url("../image/css_sprites.png");
+	float: right;
+    background: url("../../image/css_sprites.png");
     background-position: -462px -314px;
     width: 12px;
     height: 24px;
     cursor: pointer;
+    cursor:pointer
 }
 
 .tab-bar .page .icon-right {
-    background: url("../image/css_sprites.png");
+	float: right;
+    background: url("../../image/css_sprites.png");
     background-position: -462px -344px;
     width: 12px;
     height: 24px;
-    cursor: pointer;
+    cursor:pointer
 }
 
 .area-4 .content {
@@ -333,7 +341,7 @@
 .area-4 .content .left .div_photo {
     width: 311px;
     height: 131px;
-    margin-top: 7px;
+    margin-top: 15px;
     background-image: url("../../testfile/p_adv.png");
 }
 
@@ -359,14 +367,20 @@
 }
 
 .area-4 .content .right .book .bk {
-    margin-left: 22px;
+    margin-left: 10px;
     margin-top: 11px;
+    width:110px;
+    height:140px;
 }
 
 .book_content_size {
     font-size: 14px;
     margin-top: 29px;
     color: #333333;
+    overflow: hidden;
+    text-overflow:ellipsis; /*超出部分省略号显示*/
+    white-space:nowrap;/*强制不换行*/
+    
 }
 
 .yellow {
@@ -397,7 +411,11 @@
 }
 
 .yellow-span {
+	text-overflow:ellipsis; 
+    white-space:nowrap;
+    overflow: hidden;
     float: left;
+    width:50px;
 }
 
 .book_content_name {
@@ -405,7 +423,7 @@
     margin-top: 9px;
     color: #999999
 }
-
+ 
 .book_content_picture {
     font-size: 11px;
     margin-top: 16px;
@@ -693,7 +711,7 @@
 }
 
 .last_star_true {
-    background-image: url("../testfile/sprites.png");
+    background-image: url("../../testfile/sprites.png");
     background-position: -183px -175px;
     background-repeat: no-repeat;
     height: 11px;
@@ -702,7 +720,7 @@
 }
 
 .last_star_false {
-    background-image: url("../testfile/sprites.png");
+    background-image: url("../../testfile/sprites.png");
     background-position: -182px -154px;
     background-repeat: no-repeat;
     height: 12px;
@@ -878,6 +896,7 @@
     float: left;
     margin-left: 0px;
     border-bottom: 1px solid #DEDEDE;
+    cursor:pointer
 }
 
 .right_div1.active{
@@ -958,7 +977,6 @@
     height: 100px;
     margin-top: 30px;
     margin-left: 25px;
-    background-color: #333333;
 }
 
 .book_style {
@@ -981,12 +999,15 @@
 
 .sale_book {
     float: left;
+    height:35px;
     margin-top: -4px;
     font-family: MicrosoftYaHei;
     font-size: 12px;
     line-height: 24px;
     letter-spacing: 0px;
     color: #333333;
+    line-height:17px;
+    overflow:hidden;
 }
 
 .num1 {

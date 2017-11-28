@@ -5,18 +5,9 @@
   Time: 11:34
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Title</title>
-    <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="${ctx}/statics/comm/tail.css" type="text/css">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="${ctx}/statics/comm/tail.css" type="text/css">
 <div style="height: 60px;width: 100%;"></div>
 <div class="about">
     <div class="item" style="border-left:0px">关于平台</div>

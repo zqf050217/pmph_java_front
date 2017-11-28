@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bc.pmpheep.back.authadmin.accountset.dao.adminInfoDao" >
+	
+	<!-- 查询待办事项列表 -->
+	<select id="selectAdminInfo" parameterType="Long" resultType="java.util.Map">
+		SELECT realname,sex,POSITION,title,fax,telephone,idcard,email,address,postcode
+		FROM org_user WHERE id= #{userId}
+	</select>
+	
+	
+</mapper>
