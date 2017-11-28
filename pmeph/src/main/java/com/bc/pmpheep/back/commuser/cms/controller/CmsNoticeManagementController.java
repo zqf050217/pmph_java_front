@@ -43,8 +43,11 @@ public class CmsNoticeManagementController {
 	 * 功能描述：获取公告列表
 	 *
 	 * @param pageSize
+	 *            一页的数据数量
 	 * @param pageNumber
+	 *            当前第几页
 	 * @param isHot
+	 *            是否热门
 	 * @return
 	 *
 	 */
