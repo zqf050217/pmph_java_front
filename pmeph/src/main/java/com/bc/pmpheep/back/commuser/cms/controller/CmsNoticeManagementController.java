@@ -59,7 +59,7 @@ public class CmsNoticeManagementController {
 		pageParameter.setParameter(cmsNoticeList);
 		Map<String, ResponseBean<CmsNoticeList>> map = new HashMap<>();
 		map.put("CmsInfoLettersList", new ResponseBean(cmsNoticeManagementService.list(pageParameter)));
-		return new ModelAndView("commuser/cmsinfoletters/list", map);
+		return new ModelAndView("commuser/cmsnotice/list", map);
 	}
 
 }
