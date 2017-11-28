@@ -1,10 +1,18 @@
 package com.bc.pmpheep.back.commuser.cms.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.bc.pmpheep.back.commuser.cms.bean.CmsNoticeList;
 import com.bc.pmpheep.back.commuser.cms.service.CmsNoticeManagementService;
+import com.bc.pmpheep.back.plugin.PageParameter;
+import com.bc.pmpheep.controller.bean.ResponseBean;
 
 /**
  * 
@@ -28,4 +36,27 @@ import com.bc.pmpheep.back.commuser.cms.service.CmsNoticeManagementService;
 public class CmsNoticeManagementController {
 	@Autowired
 	CmsNoticeManagementService cmsNoticeManagementService;
+
+	/**
+	 * 
+	 * 
+	 * 功能描述：获取公告列表
+	 *
+	 * @param pageSize
+	 * @param pageNumber
+	 * @param isHot
+	 * @return
+	 *
+	 */
+	@RequestMapping(value = "/tolist", method = RequestMethod.GET)
+	public ModelAndView list(Integer pageSize, Integer pageNumber, Boolean isHot) {
+		PageParameter<CmsNoticeList> pageParameter = new PageParameter<>(pageNumber, pageSize);
+		CmsNoticeList cmsNoticeList = new CmsNoticeList();
+		cmsNoticeList.setIsHot(isHot);
+		pageParameter.setParameter(cmsNoticeList);
+		Map<String, ResponseBean<CmsNoticeList>> map = new HashMap<>();
+		map.put("CmsInfoLettersList", new ResponseBean(cmsNoticeManagementService.list(pageParameter)));
+		return new ModelAndView("commuser/cmsinfoletters/list", map);
+	}
+
 }

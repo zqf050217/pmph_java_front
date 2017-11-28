@@ -1,5 +1,10 @@
 package com.bc.pmpheep.back.commuser.cms.dao;
 
+import java.util.List;
+
+import com.bc.pmpheep.back.commuser.cms.bean.CmsNoticeList;
+import com.bc.pmpheep.back.plugin.PageParameter;
+
 /**
  * 
  * 
@@ -18,5 +23,25 @@ package com.bc.pmpheep.back.commuser.cms.dao;
  *
  */
 public interface CmsNoticeManagementDao {
+	/**
+	 * 
+	 * 
+	 * 功能描述：获取信息快报的总条数
+	 *
+	 * @param pageParameter
+	 * @return
+	 *
+	 */
+	Integer getCmsNoticeListTotal();
 
+	/**
+	 * 
+	 * 
+	 * 功能描述：前台获取信息快报列表
+	 *
+	 * @param pageParameter
+	 * @return
+	 *
+	 */
+	List<CmsNoticeList> list(PageParameter<CmsNoticeList> pageParameter);
 }

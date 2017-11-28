@@ -36,17 +36,12 @@ public class CmsInfoLettersManagementServiceImpl implements CmsInfoLettersManage
 	public PageResult<CmsInfoLettersList> list(PageParameter<CmsInfoLettersList> pageParameter)
 			throws CheckedServiceException {
 		PageResult<CmsInfoLettersList> pageResult = new PageResult<>();
-		try {
-			Integer total = cmsInfoLettersManagementDao.getCmsInfoLettersListTotal();
-			if (total > 0) {
-				PageParameterUitl.CopyPageParameter(pageParameter, pageResult);
-				pageResult.setRows(cmsInfoLettersManagementDao.list(pageParameter));
-			}
+		Integer total = cmsInfoLettersManagementDao.getCmsInfoLettersListTotal();
+		if (total > 0) {
+			PageParameterUitl.CopyPageParameter(pageParameter, pageResult);
+			pageResult.setRows(cmsInfoLettersManagementDao.list(pageParameter));
 			pageResult.setTotal(total);
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-
 		return pageResult;
 	}
 }

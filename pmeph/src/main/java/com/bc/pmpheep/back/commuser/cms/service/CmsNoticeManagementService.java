@@ -1,5 +1,10 @@
 package com.bc.pmpheep.back.commuser.cms.service;
 
+import com.bc.pmpheep.back.commuser.cms.bean.CmsNoticeList;
+import com.bc.pmpheep.back.plugin.PageParameter;
+import com.bc.pmpheep.back.plugin.PageResult;
+import com.bc.pmpheep.service.exception.CheckedServiceException;
+
 /**
  * 
  * 
@@ -18,5 +23,15 @@ package com.bc.pmpheep.back.commuser.cms.service;
  *
  */
 public interface CmsNoticeManagementService {
-
+	/**
+	 * 
+	 * 
+	 * 功能描述：前台获取公告列表
+	 *
+	 * @param pageParameter
+	 * @return
+	 * @throws CheckedServiceException
+	 *
+	 */
+	PageResult<CmsNoticeList> list(PageParameter<CmsNoticeList> pageParameter) throws CheckedServiceException;
 }
