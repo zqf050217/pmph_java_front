@@ -31,4 +31,18 @@ public interface WriterUserDao {
 	 *
 	 */
 	WriterUser get(Long id);
+	
+	/**
+	 * 根据机构orgid 加载机构用户下的作家
+	 * @param orgId
+	 * @return
+	 */
+	WriterUser getOrg(Long orgId);
+	
+	/**
+	 * 根据用户输入查询 必传orgid
+	 * @param writerUser
+	 * @return
+	 */
+	WriterUser getByOrgId(WriterUser writerUser);
 }

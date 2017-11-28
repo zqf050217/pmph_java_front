@@ -40,4 +40,22 @@ public class WriterUserServiceImpl implements WriterUserService {
 		}
 		return writerUserDao.get(id);
 	}
+
+	@Override
+	public WriterUser getOrg(Long orgId) throws CheckedServiceException {
+		if(ObjectUtil.isNull(orgId)){
+			throw new CheckedServiceException(CheckedExceptionBusiness.USER_MANAGEMENT,
+					CheckedExceptionResult.NULL_PARAM, "机构ID为空时禁止查询");
+		}
+		return writerUserDao.getOrg(orgId);
+	}
+
+	@Override
+	public WriterUser getByOrgId(WriterUser writerUser) throws CheckedServiceException {
+		if(ObjectUtil.isNull(writerUser.getOrgId())){
+			throw new CheckedServiceException(CheckedExceptionBusiness.USER_MANAGEMENT,
+					CheckedExceptionResult.NULL_PARAM, "机构ID为空时禁止查询");
+		}
+		return writerUserDao.getByOrgId(writerUser);
+	}
 }

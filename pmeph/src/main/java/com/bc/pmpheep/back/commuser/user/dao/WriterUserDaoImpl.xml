@@ -336,5 +336,24 @@
 		WHERE
 		id = #{id}
 	</select>
-
+	<!-- 根据机构id查询该机构下的作家 -->
+	<select id="getOrg" parameterType="Long" resultType="WriterUser">
+		select wu.* 
+		from writer_user wu
+		left join org o on o.id= wu.org_id
+		where wu.org_id=#{orgid}
+	</select>
+	<!-- 根据用户输入的条件查询该机构下的作家 -->
+	<select id="getByOrgId" parameterType="Long" resultType="WriterUser">
+		select wu.* 
+		from writer_user wu
+		left join org o on o.id= wu.org_id
+		where 1=1
+		<if test="username !=null and username !='' ">
+			and wu.username like concat('%',#{username},'%' )
+		</if>
+		<if test="orgId !=null">
+			and  wu.org_id=#{orgId}
+		</if>
+	</select>
 </mapper>

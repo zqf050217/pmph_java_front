@@ -28,5 +28,20 @@ public interface WriterUserService {
 	 * @return
 	 */
 	WriterUser get(Long id) throws CheckedServiceException;
-
+	
+	/**
+	 * 根据机构orgid 加载机构用户下的作家
+	 * @param orgId
+	 * @return
+	 * @throws CheckedServiceException
+	 */
+	WriterUser getOrg(Long orgId) throws CheckedServiceException;
+	
+	/**
+	 * 条件搜索 必传orgid
+	 * @param writerUser
+	 * @return
+	 * @throws CheckedServiceException
+	 */
+	WriterUser getByOrgId(WriterUser writerUser) throws CheckedServiceException;
 }
