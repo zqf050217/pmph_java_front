@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bc.pmpheep.back.commuser.myfriend.dao.MyFriendDao">
+	<sql id="key">
+		<!-- 去掉最后一个, -->
+		<trim suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="requestId != null ">
+				request_id,
+			</if>
+			<if test=" targetId != null ">
+				target_id,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+		</trim>
+	</sql>
+	<!-- sql片段对应?,id属性值任意 -->
+	<sql id="value">
+		<!-- 去掉最后一个, -->
+		<trim suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="requestId != null ">
+				#{requestId},
+			</if>
+			<if test="targetId != null ">
+				#{targetId},
+			</if>
+			<if test="status != null">
+				#{status},
+			</if>
+		</trim>
+	</sql>
+	<!-- 新增WriterFriend -->
+	<insert id="addWriterFriend" parameterType="WriterFriend" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into writer_friend (
+		<include refid="key" />
+		)
+		values(
+		<include refid="value" />
+		) ;
+	</insert>
+	
+	<!--获取用户好友列表  -->
+	<select id="listMyFriend" parameterType="java.lang.Long" resultType="WriterFriendVO">
+		SELECT 
+			wu.`id`,
+			wu.`username`,
+			wu.`position`,
+			wu.`avatar`
+		FROM 
+			writer_friend wf 
+		LEFT JOIN 
+			writer_user wu 
+		ON 
+			wf.`request_id`= wu.`id`
+		WHERE
+			wf.`status`=2
+		AND
+			wf.`target_id`=#{userId}
+		ORDER BY 
+			wf.`gmt_create` DESC
+	</select>
+
+</mapper>

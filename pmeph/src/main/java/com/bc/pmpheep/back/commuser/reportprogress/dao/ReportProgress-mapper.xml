@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bc.pmpheep.back.commuser.reportprogress.dao.ReportProgressDao">
+	
+	<!--获取教材审核进度  -->
+	<select id="getMaterialProgress" parameterType="java.util.Map" resultType="TextBookCheckVO">
+		SELECT 
+			dc.`material_id`,
+			dc.`offline_progress`,
+			dc.`online_progress`
+		FROM 
+			`declaration` dc 
+		WHERE
+			 dc.`material_id` =#{materialId}
+		AND 
+			dc.`user_id`=#{userId}
+	</select>
+	
+	<!-- 获取申报教材中书籍审核结果 -->
+	<select id="getTextBookCheckResult" parameterType="java.util.Map" resultType="TextBookCheckVO">
+		SELECT 
+			m.`material_name`, dc.`material_id`,dc.`user_id`,
+			tb.`textbook_name`,dp.`chosen_position`,
+			tb.`is_chief_chosen`, tb.`is_published`
+		FROM  
+			`declaration` dc  
+		LEFT JOIN 
+			`textbook` tb 
+		ON 
+			dc.`material_id` = tb.`material_id`
+		LEFT JOIN 
+			`dec_position` dp 
+		ON 
+			dc.`id`= dp.`declaration_id`
+		LEFT JOIN 
+			`material` m 
+		ON 
+			dc.`material_id`=m.`id`
+		WHERE 
+			dc.`material_id` =#{materialId}
+		AND 
+			dc.`user_id`=#{userId}
+	</select>
+
+</mapper>
