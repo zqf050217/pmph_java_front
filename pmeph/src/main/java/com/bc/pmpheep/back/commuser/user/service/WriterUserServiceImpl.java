@@ -1,11 +1,17 @@
 package com.bc.pmpheep.back.commuser.user.service;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bc.pmpheep.back.commuser.user.bean.WriterUser;
+import com.bc.pmpheep.back.commuser.user.bean.WriterUserCertificationVO;
 import com.bc.pmpheep.back.commuser.user.dao.WriterUserDao;
 import com.bc.pmpheep.back.util.ObjectUtil;
+import com.bc.pmpheep.general.bean.FileType;
+import com.bc.pmpheep.general.service.FileService;
 import com.bc.pmpheep.service.exception.CheckedExceptionBusiness;
 import com.bc.pmpheep.service.exception.CheckedExceptionResult;
 import com.bc.pmpheep.service.exception.CheckedServiceException;
@@ -30,7 +36,9 @@ import com.bc.pmpheep.service.exception.CheckedServiceException;
 @Service
 public class WriterUserServiceImpl implements WriterUserService {
 	@Autowired
-	WriterUserDao writerUserDao;
+	private WriterUserDao writerUserDao;
+	@Autowired
+	private FileService fileService;
 
 	@Override
 	public WriterUser get(Long id) throws CheckedServiceException {
@@ -57,5 +65,49 @@ public class WriterUserServiceImpl implements WriterUserService {
 					CheckedExceptionResult.NULL_PARAM, "机构ID为空时禁止查询");
 		}
 		return writerUserDao.getByOrgId(writerUser);
+	}
+
+	@Override
+	public WriterUserCertificationVO showTeacherCertification(Long id) {
+		if (ObjectUtil.isNull(id)) {
+			throw new CheckedServiceException(CheckedExceptionBusiness.USER_MANAGEMENT,
+					CheckedExceptionResult.NULL_PARAM, "id不能为空");
+		}
+		WriterUserCertificationVO writerUserCertificationVO = writerUserDao.showTeacherCertification(id);
+		return writerUserCertificationVO;
+	}
+
+	@Override
+	public WriterUserCertificationVO updateTeacherCertification(WriterUserCertificationVO writerUserCertificationVO) 
+			throws IOException {
+		if (ObjectUtil.isNull(writerUserCertificationVO)) { // 获取的数据不能为空
+			throw new CheckedServiceException(CheckedExceptionBusiness.USER_MANAGEMENT,
+					CheckedExceptionResult.NULL_PARAM, "作家用户信息不能为空");
+		}
+		// 获取需要插入数据库的数据
+		Long id = writerUserCertificationVO.getId();
+		Long userId = writerUserCertificationVO.getUserId(); // 获取作家id
+		Long orgId = writerUserCertificationVO.getOrgId(); // 获取对应学校id
+		String handPhone = writerUserCertificationVO.getHandphone(); // 获取手机
+		String idCard = writerUserCertificationVO.getIdcard(); // 获取身份证
+		Integer progress = writerUserCertificationVO.getProgress(); // 认证进度
+		MultipartFile cert = writerUserCertificationVO.getCert(); // 获取教师资格证
+		// 把获取的数据添加进writerUser
+		writerUserCertificationVO.setUserId(userId);
+		writerUserCertificationVO.setOrgId(orgId);
+		writerUserCertificationVO.setHandphone(handPhone);
+		writerUserCertificationVO.setIdcard(idCard);
+		writerUserCertificationVO.setProgress(progress);
+		writerUserDao.addCertification(writerUserCertificationVO);
+		String mongoId = null;
+        if (null == cert) {
+        	
+        } else {
+            mongoId = fileService.save(cert, FileType.TEACHER_CERTIFICATION_PIC, writerUserCertificationVO.getId());
+            if (null != mongoId) {
+            	writerUserDao.updateCertification(id);
+            }
+        }
+		return writerUserCertificationVO;
 	}
 }

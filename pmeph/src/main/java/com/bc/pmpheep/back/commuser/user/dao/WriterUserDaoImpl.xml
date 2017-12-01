@@ -356,4 +356,51 @@
 			and  wu.org_id=#{orgId}
 		</if>
 	</select>
+	
+	<!-- 查看学校教师认证信息 -->
+	<select id="showTeacherCertification" parameterType="Long" resultType="WriterUserCertificationVO">
+		select *,wu.username,o.org_name from writer_user_certification wuc 
+		left join (select id,username from writer_user) wu on (wu.id=wuc.user_id) 
+		left join (select id,org_name from org) o on (o.id=wuc.org_id)
+		where wuc.id=#{id}
+	</select>
+	
+	<insert id="addCertification" parameterType="WriterUserCertificationVO" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO writer_user_certification
+		(
+		user_id,org_id,handphone,idcard,progress,cert
+		)
+		VALUES
+		(
+		#{userid},#{orgid},#{handphone},#{idcard},#{progress},#{cert}
+		);
+	</insert>
+
+	<!-- 动态更新对象的写法 -->
+	<update id="updateCertification" parameterType="WriterUserCertificationVO">
+		UPDATE writer_user_certification
+		<set>
+			<if test="userid != null and userid !=''">
+				user_id = #{userid}
+			</if>
+			<if test="orgId != null and  orgId!=''">
+				org_id = #{orgId},
+			</if>
+			<if test=" handphone != null and handphone !=''">
+				handphone = #{handphone},
+			</if>
+			<if test=" idcard != null and idcard !=''">
+				idcard= #{idcard},
+			</if>
+			<if test=" progress != null and  progress != ''">
+				progress = #{progress},
+			</if>
+			<if test=" cert != null and cert !=''">
+				cert = #{cert}
+			</if>
+		</set>
+		WHERE
+		id = #{id}
+	</update>
 </mapper>

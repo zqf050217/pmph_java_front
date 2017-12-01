@@ -1,6 +1,9 @@
 package com.bc.pmpheep.back.commuser.user.service;
 
+import java.io.IOException;
+
 import com.bc.pmpheep.back.commuser.user.bean.WriterUser;
+import com.bc.pmpheep.back.commuser.user.bean.WriterUserCertificationVO;
 import com.bc.pmpheep.service.exception.CheckedServiceException;
 
 /**
@@ -44,4 +47,23 @@ public interface WriterUserService {
 	 * @throws CheckedServiceException
 	 */
 	WriterUser getByOrgId(WriterUser writerUser) throws CheckedServiceException;
+	
+	/**
+	 * 查看学校教师认证信息
+	 * @author tyc
+     * @createDate 2017年11月30日 上午10:44:09
+	 * @param id
+	 * @return
+	 */
+	WriterUserCertificationVO showTeacherCertification(Long id);
+	
+	/**
+	 * 修改学校教师认证
+	 * @author tyc
+     * @createDate 2017年11月30日 上午10:44:09
+	 * @param writerUserCertificationVO
+	 * @return
+	 */
+	WriterUserCertificationVO updateTeacherCertification(WriterUserCertificationVO writerUserCertificationVO) 
+			throws IOException ;
 }
