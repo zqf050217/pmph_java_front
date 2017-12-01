@@ -365,20 +365,16 @@
 		where wuc.id=#{id}
 	</select>
 	
-	<insert id="addCertification" parameterType="WriterUserCertificationVO" useGeneratedKeys="true"
+	<insert id="addCertification" parameterType="WriterUserCertification" useGeneratedKeys="true"
 		keyProperty="id">
 		INSERT INTO writer_user_certification
-		(
-		user_id,org_id,handphone,idcard,progress,cert
-		)
+		(user_id,org_id,handphone,idcard,progress,cert)
 		VALUES
-		(
-		#{userid},#{orgid},#{handphone},#{idcard},#{progress},#{cert}
-		);
+		(#{userid},#{orgid},#{handphone},#{idcard},#{progress},#{cert});
 	</insert>
 
 	<!-- 动态更新对象的写法 -->
-	<update id="updateCertification" parameterType="WriterUserCertificationVO">
+	<update id="updateCertification" parameterType="WriterUserCertification">
 		UPDATE writer_user_certification
 		<set>
 			<if test="userid != null and userid !=''">
@@ -396,8 +392,10 @@
 			<if test=" progress != null and  progress != ''">
 				progress = #{progress},
 			</if>
+			<if test=" cert != null and  cert != ''">
+				cert = #{cert},
+			</if>
 		</set>
-		cert = #{cert}
 		WHERE
 		id = #{id}
 	</update>

@@ -3,6 +3,7 @@ package com.bc.pmpheep.back.commuser.user.dao;
 import org.apache.ibatis.annotations.Param;
 
 import com.bc.pmpheep.back.commuser.user.bean.WriterUser;
+import com.bc.pmpheep.back.commuser.user.bean.WriterUserCertification;
 import com.bc.pmpheep.back.commuser.user.bean.WriterUserCertificationVO;
 
 /**
@@ -62,10 +63,10 @@ public interface WriterUserDao {
 	 * 添加学校教师认证
 	 * @author tyc
      * @createDate 2017年12月1日 上午09:39:09
-	 * @param writerUserCertificationVO
+	 * @param writerUserCertification
 	 * @return
 	 */
-	WriterUserCertificationVO addCertification(WriterUserCertificationVO writerUserCertificationVO);
+	WriterUserCertification addCertification(WriterUserCertification writerUserCertification);
 	
 	/**
 	 * 修改学校教师认证
@@ -74,5 +75,5 @@ public interface WriterUserDao {
 	 * @param id
 	 * @return
 	 */
-	WriterUserCertificationVO updateCertification(Long id);
+	WriterUserCertification updateCertification(Long id);
 }

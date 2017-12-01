@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bc.pmpheep.back.common.controller.BaseController;
+import com.bc.pmpheep.back.commuser.user.bean.WriterUserCertification;
 import com.bc.pmpheep.back.commuser.user.bean.WriterUserCertificationVO;
 import com.bc.pmpheep.back.commuser.user.service.WriterUserService;
 
@@ -38,7 +39,7 @@ public class TeacherCertification extends BaseController {
     public ModelAndView updateTeacherCertification(WriterUserCertificationVO writerUserCertificationVO) 
     		throws Exception {
 		ModelAndView model = this.getModelAndView();
-		WriterUserCertificationVO updateWriterUserCertification = 
+		WriterUserCertification updateWriterUserCertification = 
 				writerUserService.updateTeacherCertification(writerUserCertificationVO);
 		model.addObject("updateWriterUserCertification", updateWriterUserCertification);
 		return model;
