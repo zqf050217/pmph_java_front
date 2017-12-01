@@ -1,24 +1,21 @@
 package com.bc.pmpheep.back.commuser.cms.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.bc.pmpheep.back.common.bean.Page;
+
 import com.bc.pmpheep.back.common.controller.BaseController;
 import com.bc.pmpheep.back.commuser.cms.bean.CmsContent;
 import com.bc.pmpheep.back.commuser.cms.bean.CmsNoticeList;
 import com.bc.pmpheep.back.commuser.cms.service.CmsContentService;
-import com.bc.pmpheep.back.commuser.textbook.bean.Textbook;
-import com.bc.pmpheep.back.commuser.textbook.service.TextbookService;
 import com.bc.pmpheep.back.plugin.PageParameter;
 import com.bc.pmpheep.controller.bean.ResponseBean;
-import com.bc.pmpheep.service.exception.CheckedServiceException;
 
 /**
  * CMS
