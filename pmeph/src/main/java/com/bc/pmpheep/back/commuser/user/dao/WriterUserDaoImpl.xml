@@ -352,6 +352,9 @@
 		<if test="username !=null and username !='' ">
 			and wu.username like concat('%',#{username},'%' )
 		</if>
+		<if test="realname !=null and realname !='' ">
+			and wu.realname like concat('%',#{realname},'%' )
+		</if>
 		<if test="orgId !=null">
 			and  wu.org_id=#{orgId}
 		</if>
