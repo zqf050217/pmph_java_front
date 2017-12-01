@@ -396,10 +396,8 @@
 			<if test=" progress != null and  progress != ''">
 				progress = #{progress},
 			</if>
-			<if test=" cert != null and cert !=''">
-				cert = #{cert}
-			</if>
 		</set>
+		cert = #{cert}
 		WHERE
 		id = #{id}
 	</update>
