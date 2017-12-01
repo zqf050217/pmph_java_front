@@ -1,5 +1,7 @@
 package com.bc.pmpheep.back.commuser.user.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +29,7 @@ public class TeacherCertification extends BaseController {
 	
 	@ResponseBody
     @RequestMapping(value = "/showTeacherCertification", method = RequestMethod.GET)
-    public ModelAndView showTeacherCertification(@RequestParam("id") Long id) throws Exception {
+    public ModelAndView showTeacherCertification(@RequestParam("id") Long id) {
 		ModelAndView model = this.getModelAndView();
 		WriterUserCertificationVO showWriterUserCertification = writerUserService.showTeacherCertification(id);
 		model.addObject("showWriterUserCertification", showWriterUserCertification);
@@ -37,7 +39,7 @@ public class TeacherCertification extends BaseController {
 	@ResponseBody
     @RequestMapping(value = "/updateTeacherCertification", method = RequestMethod.GET)
     public ModelAndView updateTeacherCertification(WriterUserCertificationVO writerUserCertificationVO) 
-    		throws Exception {
+    		throws IOException {
 		ModelAndView model = this.getModelAndView();
 		WriterUserCertification updateWriterUserCertification = 
 				writerUserService.updateTeacherCertification(writerUserCertificationVO);
