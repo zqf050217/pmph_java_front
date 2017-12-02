@@ -3,6 +3,7 @@ package com.bc.pmpheep.back.commuser.user.service;
 import java.io.IOException;
 
 import com.bc.pmpheep.back.commuser.user.bean.WriterUser;
+import com.bc.pmpheep.back.commuser.user.bean.WriterUserCertification;
 import com.bc.pmpheep.back.commuser.user.bean.WriterUserCertificationVO;
 import com.bc.pmpheep.service.exception.CheckedServiceException;
 
@@ -64,6 +65,6 @@ public interface WriterUserService {
 	 * @param writerUserCertificationVO
 	 * @return
 	 */
-	WriterUserCertificationVO updateTeacherCertification(WriterUserCertificationVO writerUserCertificationVO) 
+	WriterUserCertification updateTeacherCertification(WriterUserCertificationVO writerUserCertificationVO) 
 			throws IOException ;
 }
