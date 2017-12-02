@@ -12,7 +12,7 @@ import org.apache.ibatis.type.Alias;
  * 
  */
 @SuppressWarnings("serial")
-@Alias("PmphGroup")
+@Alias("Group")
 public class Group implements Serializable {
 	/**
 	 * 主键

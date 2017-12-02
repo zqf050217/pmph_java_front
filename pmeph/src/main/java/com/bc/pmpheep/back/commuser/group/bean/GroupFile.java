@@ -12,7 +12,7 @@ import org.apache.ibatis.type.Alias;
  *
  */
 @SuppressWarnings("serial")
-@Alias("PmphGroupFile")
+@Alias("GroupFile")
 public class GroupFile implements Serializable {
 	/**
 	 * 主键
