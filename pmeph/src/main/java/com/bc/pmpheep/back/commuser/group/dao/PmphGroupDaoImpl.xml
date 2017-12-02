@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bc.pmpheep.back.commuser.group.dao.PmphGroupDao">
+
+	<!-- 查当前用户的小组列表 -->
+	<select id="list" resultType="GroupList">
+		select
+		g.*,
+		t.textbook_name bookName
+		from
+		pmph_group g
+		LEFT
+		JOIN textbook t
+		ON g.book_id = t.id
+		where
+		g.id
+		in (
+		select DISTINCT
+		group_id from
+		pmph_group_member where user_id = #{id}
+		and
+		is_writer =
+		true AND
+		is_deleted = FALSE
+		)
+		order by group_name
+		limit
+		#{start},#{pageSize}
+	</select>
+
+	<!-- 查当前用户的小组列表总数 -->
+	<select id="getPmphGroupCount" resultType="Long">
+		SELECT
+		COUNT(*)
+		FROM
+		pmph_group g
+		LEFT JOIN textbook t ON g.book_id = t.id
+		WHERE
+		g.id IN (
+		SELECT DISTINCT
+		group_id
+		FROM
+		pmph_group_member
+		WHERE
+		user_id = #{id}
+		AND
+		is_writer = TRUE
+		AND is_deleted = FALSE
+		)
+		ORDER BY
+		group_name
+	</select>
+
+</mapper>
