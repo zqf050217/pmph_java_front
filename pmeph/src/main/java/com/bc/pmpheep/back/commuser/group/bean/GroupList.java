@@ -37,7 +37,7 @@ public class GroupList {
 	/**
 	 * 小组最新动态
 	 */
-	private List<PmphGroupMessage> groupMassages;
+	private List<GroupMessage> groupMassages;
 
 	public Long getId() {
 		return id;
@@ -87,11 +87,11 @@ public class GroupList {
 		this.avatars = avatars;
 	}
 
-	public List<PmphGroupMessage> getGroupMassages() {
+	public List<GroupMessage> getGroupMassages() {
 		return groupMassages;
 	}
 
-	public void setGroupMassages(List<PmphGroupMessage> groupMassages) {
+	public void setGroupMassages(List<GroupMessage> groupMassages) {
 		this.groupMassages = groupMassages;
 	}
 

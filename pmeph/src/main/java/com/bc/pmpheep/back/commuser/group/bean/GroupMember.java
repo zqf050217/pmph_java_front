@@ -55,16 +55,16 @@ public class GroupMember implements Serializable {
 	 */
 	private Timestamp gmtUpdate;
 
-	public PmphGroupMember() {
+	public GroupMember() {
 		super();
 	}
 
-	public PmphGroupMember(Long id) {
+	public GroupMember(Long id) {
 		super();
 		this.id = id;
 	}
 
-	public PmphGroupMember(Long groupId, Long userId, Boolean isWriter, Boolean isFounder, Boolean isAdmin,
+	public GroupMember(Long groupId, Long userId, Boolean isWriter, Boolean isFounder, Boolean isAdmin,
 			Boolean isDeleted, String displayName, Timestamp gmtCreate, Timestamp gmtUpdate) {
 		super();
 		this.groupId = groupId;

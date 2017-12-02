@@ -38,16 +38,16 @@ public class GroupMessage implements Serializable {
     private Timestamp gmtCreate;
 
     
-    public PmphGroupMessage(Long id) {
+    public GroupMessage(Long id) {
 		super();
 		this.id = id;
 	}
 
-	public PmphGroupMessage() {
+	public GroupMessage() {
 		super();
 	}
 
-	public PmphGroupMessage(Long groupId, Long memberId, String msgContent) {
+	public GroupMessage(Long groupId, Long memberId, String msgContent) {
 	this.groupId = groupId;
 	this.memberId = memberId;
 	this.msgContent = msgContent;
