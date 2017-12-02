@@ -2,9 +2,7 @@ package com.bc.pmpheep.back.commuser.cms.dao;
 
 import java.util.List;
 
-import com.bc.pmpheep.back.common.bean.Page;
-import com.bc.pmpheep.back.commuser.cms.bean.CmsContent;
-import com.bc.pmpheep.back.commuser.cms.bean.CmsInfoLettersList;
+import com.bc.pmpheep.back.commuser.cms.bean.CmsContentVO;
 import com.bc.pmpheep.back.plugin.PageParameter;
 
 /**
@@ -19,7 +17,7 @@ public interface  CmsContentDao{
 	 * @param pageParameter
 	 * @return
 	 */
-	List<CmsContent>  list(PageParameter<CmsContent> pageParameter);
+	List<CmsContentVO>  list(PageParameter<CmsContentVO> pageParameter);
 	
 	/**
 	 * 查询医学随笔总条数

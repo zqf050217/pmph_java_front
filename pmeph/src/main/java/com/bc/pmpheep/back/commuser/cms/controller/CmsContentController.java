@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bc.pmpheep.back.common.controller.BaseController;
-import com.bc.pmpheep.back.commuser.cms.bean.CmsContent;
-import com.bc.pmpheep.back.commuser.cms.bean.CmsNoticeList;
+import com.bc.pmpheep.back.commuser.cms.bean.CmsContentVO;
 import com.bc.pmpheep.back.commuser.cms.service.CmsContentService;
 import com.bc.pmpheep.back.plugin.PageParameter;
 import com.bc.pmpheep.controller.bean.ResponseBean;
@@ -32,19 +31,19 @@ public class CmsContentController extends BaseController{
 	@Resource
 	private CmsContentService cmsContentService;
 
-    /**
-     * 
-     * 功能描述：查询医学随笔列表
-     * @param
-     * @return
-     */
-    @RequestMapping(value = "/cmsList", method = RequestMethod.GET)
+	/**
+	 * 功能描述：查询医学随笔列表
+	 * @param pageSize
+	 * @param pageNumber
+	 * @return
+	 */
+    @RequestMapping(value = "/cmsList", method = RequestMethod.POST)
 	public ModelAndView cmsList(Integer pageSize, Integer pageNumber) {
-		PageParameter<CmsContent> pageParameter = new PageParameter<>(pageNumber, pageSize);
-		CmsContent cmsContent = new CmsContent();
-		pageParameter.setParameter(cmsContent);
-		Map<String, ResponseBean<CmsNoticeList>> map = new HashMap<>();
-		map.put("CmsContent", new ResponseBean(cmsContentService.list(pageParameter)));
-		return new ModelAndView("commuser/cmscontent/listCms", map);
+		PageParameter<CmsContentVO> pageParameter = new PageParameter<>(pageNumber, pageSize);
+		CmsContentVO cmsContentVO = new CmsContentVO();
+		pageParameter.setParameter(cmsContentVO);
+		Map<String, ResponseBean<CmsContentVO>> map = new HashMap<>();
+		map.put("CmsContentVO", new ResponseBean(cmsContentService.list(pageParameter)));
+		return new ModelAndView("commuser/cmscontent/listcms", map);
 	}
 }
