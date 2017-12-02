@@ -41,7 +41,17 @@ public class ReportProgressServiceImpl implements ReportProgressService {
             throw new CheckedServiceException(CheckedExceptionBusiness.MATERIAL,
                                               CheckedExceptionResult.NULL_PARAM, "参数为空");
         }
-        return reportProgressDao.getMaterialProgress(userId, materialId);
+        TextBookCheckVO textBookCheckVO = reportProgressDao.getMaterialProgress(userId, materialId);
+        if (ObjectUtil.notNull(textBookCheckVO)) {
+            // 审核进度 0=未提交/1=已提交/2=被退回/3=通过
+            Integer online_progress_1 = 1;
+            Integer online_progress_2 = 2;
+            if (online_progress_1.intValue() == textBookCheckVO.getOnlineProgress().intValue()
+                || online_progress_2 == textBookCheckVO.getOnlineProgress().intValue()) {
+                textBookCheckVO.setOnlineSubmit(1);// 已提交
+            }
+        }
+        return textBookCheckVO;
     }
 
     @Override
