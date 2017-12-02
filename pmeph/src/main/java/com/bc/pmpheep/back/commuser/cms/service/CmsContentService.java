@@ -1,9 +1,6 @@
 package com.bc.pmpheep.back.commuser.cms.service;
 
-import java.util.List;
-
-import com.bc.pmpheep.back.common.bean.Page;
-import com.bc.pmpheep.back.commuser.cms.bean.CmsContent;
+import com.bc.pmpheep.back.commuser.cms.bean.CmsContentVO;
 import com.bc.pmpheep.back.plugin.PageParameter;
 import com.bc.pmpheep.back.plugin.PageResult;
 
@@ -18,6 +15,6 @@ public interface CmsContentService {
 	 * @return
 	 * @throws Exception
 	 */
-	PageResult<CmsContent> list(PageParameter<CmsContent> pageParameter);
+	PageResult<CmsContentVO> list(PageParameter<CmsContentVO> pageParameter);
 	
 }

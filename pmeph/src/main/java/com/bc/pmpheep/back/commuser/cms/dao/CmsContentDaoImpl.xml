@@ -207,7 +207,7 @@
 	</sql>
 	<!--CmsContent查询获取列表 -->
 	<select id="list" parameterType="PageParameter"
-		resultType="CmsContent">
+		resultType="CmsContentVO">
 		select cc.*,IFNULL(wu.realname,pu.realname) realname
 		from cms_content cc
 		left join pmph_user pu on pu.id=cc.author_id
@@ -222,10 +222,6 @@
 		<if test="start !=null and pageNumber != null">
 			limit #{start},#{pageSize}
 		</if>
-	</select>
-	<!-- 根据id查询一个CmsContent -->
-	<select id="getCmsContentById" parameterType="java.lang.Long" resultType="CmsContent">
-		select * from cms_content where id=#{id};
 	</select>
 	<!-- 查询医学随笔总条数 -->
 	<select id="getCmsContentListTotal" resultType="java.lang.Integer">
