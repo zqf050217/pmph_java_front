@@ -28,6 +28,10 @@ public class TextBookCheckVO implements Serializable {
     private Long    materialId;
     // 教材名称
     private String  materialName;
+    // 书籍id
+    private Long    textbookId;
+    // 书籍名称
+    private String  textbookName;
     // 作家id
     private Long    userId;
     // 是否提交
@@ -36,8 +40,10 @@ public class TextBookCheckVO implements Serializable {
     private Integer onlineProgress;
     // 纸质表进度
     private Integer offlineProgress;
-    // 书籍名称
-    private String  textbookName;
+    // 遴选职务
+    private Integer chosenPosition;
+    // 排位
+    private Integer rank;
     // 是否已选定第一主编
     private Boolean isChiefChosen;
     // 是否已公布
@@ -167,6 +173,48 @@ public class TextBookCheckVO implements Serializable {
      */
     public void setMaterialName(String materialName) {
         this.materialName = materialName;
+    }
+
+    /**
+     * @return the rank
+     */
+    public Integer getRank() {
+        return rank;
+    }
+
+    /**
+     * @param rank the rank to set
+     */
+    public void setRank(Integer rank) {
+        this.rank = rank;
+    }
+
+    /**
+     * @return the textbookId
+     */
+    public Long getTextbookId() {
+        return textbookId;
+    }
+
+    /**
+     * @param textbookId the textbookId to set
+     */
+    public void setTextbookId(Long textbookId) {
+        this.textbookId = textbookId;
+    }
+
+    /**
+     * @return the chosenPosition
+     */
+    public Integer getChosenPosition() {
+        return chosenPosition;
+    }
+
+    /**
+     * @param chosenPosition the chosenPosition to set
+     */
+    public void setChosenPosition(Integer chosenPosition) {
+        this.chosenPosition = chosenPosition;
     }
 
 }

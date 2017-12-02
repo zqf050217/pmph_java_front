@@ -20,27 +20,28 @@
 	<!-- 获取申报教材中书籍审核结果 -->
 	<select id="getTextBookCheckResult" parameterType="java.util.Map" resultType="TextBookCheckVO">
 		SELECT 
-			m.`material_name`, dc.`material_id`,dc.`user_id`,
-			tb.`textbook_name`,dp.`chosen_position`,
-			tb.`is_chief_chosen`, tb.`is_published`
-		FROM  
-			`declaration` dc  
-		LEFT JOIN 
-			`textbook` tb 
-		ON 
-			dc.`material_id` = tb.`material_id`
-		LEFT JOIN 
+			d.`material_id`,dp.`textbook_id`,
+			tb.`textbook_name`,d.`user_id`,
+			dp.`chosen_position`,dp.`rank`,
+			tb.`is_chief_chosen`,tb.`is_published` 
+		FROM 
 			`dec_position` dp 
-		ON 
-			dc.`id`= dp.`declaration_id`
 		LEFT JOIN 
-			`material` m 
+			`declaration` d
 		ON 
-			dc.`material_id`=m.`id`
+			dp.`declaration_id` = d.`id` 
+		LEFT JOIN 
+			`textbook` tb
+		ON 
+			tb.`id`= dp.`textbook_id`
+		LEFT JOIN 
+			`material` m
+		ON 
+			tb.`material_id` = m.`id`
 		WHERE 
-			dc.`material_id` =#{materialId}
+			d.`user_id`=#{userId}
 		AND 
-			dc.`user_id`=#{userId}
+			d.`material_id`=#{materialId}
 	</select>
 
 </mapper>
