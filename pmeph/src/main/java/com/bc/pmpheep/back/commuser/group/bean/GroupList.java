@@ -23,6 +23,10 @@ public class GroupList {
 	 */
 	private String bookName;
 	/**
+	 * 创建时间
+	 */
+	private String createTime;
+	/**
 	 * 小组人数
 	 */
 	private Integer members;
@@ -101,6 +105,14 @@ public class GroupList {
 
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
 
 }
