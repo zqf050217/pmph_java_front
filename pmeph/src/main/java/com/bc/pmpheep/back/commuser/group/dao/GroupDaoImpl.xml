@@ -30,7 +30,7 @@
 	</select>
 
 	<!-- 查当前用户的小组列表总数 -->
-	<select id="getPmphGroupCount" resultType="Long">
+	<select id="getTotal" resultType="Long">
 		SELECT
 		COUNT(*)
 		FROM

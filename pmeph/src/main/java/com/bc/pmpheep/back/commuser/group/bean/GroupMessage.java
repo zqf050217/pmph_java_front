@@ -14,8 +14,8 @@ import org.apache.ibatis.type.Alias;
  *
  */
 @SuppressWarnings("serial")
-@Alias("PmphGroupMessage")
-public class PmphGroupMessage implements Serializable {
+@Alias("GroupMessage")
+public class GroupMessage implements Serializable {
     /**
      * 主键
      */

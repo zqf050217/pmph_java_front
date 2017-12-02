@@ -14,7 +14,7 @@ import com.bc.pmpheep.back.plugin.PageParameter;
  * @author mryang
  */
 @Repository
-public interface PmphGroupDao {
+public interface GroupDao {
 	/**
 	 * 
 	 * 
