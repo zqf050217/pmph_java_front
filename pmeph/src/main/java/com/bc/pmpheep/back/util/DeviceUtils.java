@@ -122,6 +122,7 @@ public class DeviceUtils {
      * @param request http请求
      * @return 如果命中手机特征规则，则返回对应的特征字符串
      */
+    @SuppressWarnings("unused")
     public static String isMobileDevice(HttpServletRequest request) {
         boolean isMobile = false;
         boolean pcFlag = false;
