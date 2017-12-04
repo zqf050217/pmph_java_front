@@ -20,12 +20,19 @@ public class BookCollectionServiceImpl implements BookCollectionService {
 	private BookCollectionDao bookCollectionDao;
 
 	@Override
-	public List<Map<String, Object>> queryBookCollectionList() {
-		return bookCollectionDao.queryBookCollectionList();
+	public List<Map<String, Object>> queryBookCollectionList(BigInteger writerId) {
+		return bookCollectionDao.queryBookCollectionList(writerId);
 	}
 
 	@Override
-	public List<Map<String, Object>> queryBookList(BigInteger favoriteId) {
-		return bookCollectionDao.queryBookList(favoriteId);
+	public List<Map<String, Object>> queryBookList(BigInteger favoriteId,int startnum,int size,BigInteger writerId) {
+		// TODO Auto-generated method stub
+		return bookCollectionDao.queryBookList(favoriteId,startnum,size,writerId);
+	}
+
+	@Override
+	public int queryBookCont(BigInteger favoriteId,BigInteger writerId) {
+		// TODO Auto-generated method stub
+		return bookCollectionDao.queryBookCont(favoriteId,writerId);
 	}
 }

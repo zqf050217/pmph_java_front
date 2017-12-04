@@ -10,20 +10,18 @@ import org.apache.ibatis.annotations.Param;
  * @author guoxiaobao @Title: @Description: 书籍收藏服务接口 @param @return @throws
  */
 public interface BookCollectionService {
-	/**
-	 * 查询书籍收藏夹以及收藏夹中收藏书的数量
-	 * 
-	 * @return List<Map<String,Object>>
-	 */
-	List<Map<String, Object>> queryBookCollectionList();
-
-	/**
-	 * 根据收藏夹id获取收藏夹内收藏的书籍
-	 * 
+	 /**查询书籍收藏夹以及收藏夹中收藏书的数量
+     * @return List<Map<String,Object>>  
+     */
+    List<Map<String,Object>> queryBookCollectionList(BigInteger writerId);
+    /**根据收藏夹id获取收藏夹内收藏的书籍
+     * @param favoriteId   收藏夹id
+     * @return List<Map<String,Object>>
+     */
+    List<Map<String,Object>> queryBookList(BigInteger favoriteId,int startnum,int size,BigInteger writerId);
+	/**查询某一收藏夹下书籍的数量
 	 * @param favoriteId
-	 *            收藏夹id
-	 * @return List<Map<String,Object>>
+	 * @return
 	 */
-	List<Map<String, Object>> queryBookList(BigInteger favoriteId);
-
+	int queryBookCont(BigInteger favoriteId,BigInteger writerId);
 }

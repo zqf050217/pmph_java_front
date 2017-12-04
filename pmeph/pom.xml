@@ -227,6 +227,13 @@
             <artifactId>poi</artifactId>
             <version>${poi.ver}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.24</version>
+        </dependency>
+
         <!-- ueditor -->
         <dependency>
             <groupId>cn.songxinqiang</groupId>

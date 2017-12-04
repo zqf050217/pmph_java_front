@@ -1,0 +1,14 @@
+<div class="book"><img src="$!{img}" class="bk"><br>
+    <div class="book_content_size">$!{bookname}</div>
+    <div class="book_content_name">
+        <span class="yellow-span">$!{author}</span>
+    </div>
+    <div class="book_content_picture">
+        <span class="yellow"></span>
+        <span class="behind"></span>
+        <span class="behind"></span>
+        <span class="behind"></span>
+        <span class="behind"></span>
+        <span class="con">9</span>
+    </div>
+</div>
